@@ -1,0 +1,28 @@
+<div class="login-container">
+  <div class="login-form">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3">
+        <label class="form-label" for="username">Name : </label>
+        <input class="form-control" formControlName="name" type="text">
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="password">Email :</label>
+        <input class="form-control" formControlName="email" type="email" name="" id="">
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="password">Username :</label>
+        <input class="form-control" formControlName="userName" type="text" name="" id="">
+      </div>
+      <div class="mb-3">
+        <label class="form-label" for="password">Password :</label>
+        <input class="form-control" formControlName="passWord" type="password" name="" id="">
+      </div>
+      <button class="btn btn-primary me-3" type="submit">Sign Up</button>
+      <button class="btn btn-primary" (click)="goToLogin()">Cancel</button>
+    </form>
+
+  </div>
+  <div class="brand-img-container">
+    <img class="brand-img" src="assets/image/login-bg.png" alt="">
+  </div>
+</div>
