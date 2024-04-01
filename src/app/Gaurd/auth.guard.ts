@@ -8,7 +8,7 @@ import { routes } from '../app.routes';
 })
 export class authGuard{
   loggedinToken:boolean = false;
-  constructor(private login : LoginService,private router:Router){}
+  constructor(private router:Router){}
   canActivate:CanActivateFn = (route, state) => {
      if(localStorage.getItem('token')){
       this.loggedinToken = Boolean(localStorage.getItem('token'));

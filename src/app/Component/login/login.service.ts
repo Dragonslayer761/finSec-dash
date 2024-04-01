@@ -1,33 +1,32 @@
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-const user = [
-  {
-    userName : "subc",
-    passWord : "123123"
-  },
-  {
-    userName : "abhs",
-    passWord : "123123"
-  }
-]
+import { catchError, map, throwError } from 'rxjs';
+
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LoginService {
 isLoggedinUser:boolean =false;
-constructor() { }
+constructor(private http : HttpClient) { }
   login(username:string,password:string){
-    for(let i =0;i<user.length;i++){
-      if( username === user[i]['userName'] && password === user[i]['passWord'] ){
-        this.isLoggedinUser = true;
-        localStorage.setItem('token',''+this.isLoggedinUser);
-        break;
-      }
+    let body = {
+      username : username,
+      password : password
     }
+    return this.http.post('http://localhost:3000/login',body).pipe(
+      map((data) => {
+        return data
+      }),
+      catchError((err)=>{
+        return throwError(()=> err)
+      })
+    )
   }
-  signup(name:string,email:string,username:string){
-    user.push({
-      userName:username,
-      passWord : ''
-    })
-  }
+
+  // signup(name:string,email:string,username:string){
+  //   user.push({
+  //     userName:username,
+  //     passWord : ''
+  //   })
+  // }
 }

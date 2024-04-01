@@ -1,13 +1,26 @@
 <div class="login-container">
   <div class="login-form">
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-      <div class="mb-3">
-        <label class="form-label" for="username">Username : </label>
-        <input class="form-control" formControlName="userName" type="text">
+      <div *ngIf="loginFailed === true" class="mb-3 alert alert-danger" role="alert">
+        <label for="">User dosen't exists. PLease enter correct Username/Password.</label>
       </div>
       <div class="mb-3">
-        <label class="form-label" for="password">Password :</label>
-        <input class="form-control" formControlName="passWord" type="password" name="" id="">
+        <label class="form-label" [ngClass]="{'text-danger' : loginForm.get('userName').hasError('required') && loginForm.get('userName').touched }"  for="username">Username* : </label>
+        <input
+          [ngClass]="{'border border-danger' : loginForm.get('userName').hasError('required') && loginForm.get('userName').touched }"
+          class="form-control" formControlName="userName" type="text">
+        <div class="mt-2" role="alert"
+          *ngIf="loginForm.get('userName').hasError('required') && loginForm.get('userName').touched">
+          <label class="text-danger" for="">Username is required</label>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label [ngClass]="{'text-danger' : loginForm.get('passWord').hasError('required') && loginForm.get('passWord').touched}" class="form-label" for="password">Password* :</label>
+        <input [ngClass]="{'border border-danger' : loginForm.get('passWord').hasError('required') && loginForm.get('passWord').touched}" class="form-control" formControlName="passWord" type="password" name="" id="">
+        <div class="mt-2" role="alert"
+          *ngIf="loginForm.get('passWord').hasError('required') && loginForm.get('passWord').touched">
+          <label class="text-danger" for=""> Password is required</label>
+        </div>
       </div>
       <div class="d-flex ">
         <div class="form-check me-3">
@@ -20,7 +33,8 @@
       </div>
       <button class="btn btn-primary">Log In</button>
       <div class="my-3">
-        Dont't have account <a  class="form-label"  [routerLink]="['/signup']" routerLinkActive="router-link-active" >signup</a>
+        Dont't have account <a class="form-label" [routerLink]="['/signup']"
+          routerLinkActive="router-link-active">signup</a>
       </div>
     </form>
 
