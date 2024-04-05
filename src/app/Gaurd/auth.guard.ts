@@ -18,6 +18,5 @@ export class authGuard{
       }
         this.router.navigate(['/login']);
         return false;
-
   };
 }
