@@ -1,0 +1,15 @@
+.profile-image {
+  border-radius: 50%;
+  background-color: red;
+  width: 25px;
+  height: 25px;
+}
+
+.dropdown-toggle::after {
+  content: none !important;
+}
+
+.dropdown-menu[data-bs-popper] {
+  top: 129%;
+  left: -150px;
+}

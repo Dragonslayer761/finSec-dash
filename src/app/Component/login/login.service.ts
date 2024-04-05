@@ -1,13 +1,15 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, throwError } from 'rxjs';
+import { routes } from '../../app.routes';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
 isLoggedinUser:boolean =false;
-constructor(private http : HttpClient) { }
+constructor(private http : HttpClient,private router:Router) { }
   login(username:string,password:string){
     let body = {
       username : username,
@@ -22,11 +24,13 @@ constructor(private http : HttpClient) { }
       })
     )
   }
+  logout(){
+    if(localStorage.getItem('token')){
+      localStorage.removeItem('token');
+      this.isLoggedinUser = false;
+      this.router.navigate(['/login'])
+    }else{
 
-  // signup(name:string,email:string,username:string){
-  //   user.push({
-  //     userName:username,
-  //     passWord : ''
-  //   })
-  // }
+    }
+  }
 }
