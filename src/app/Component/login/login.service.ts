@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, throwError } from 'rxjs';
+import { BehaviorSubject, catchError, map, throwError } from 'rxjs';
 import { routes } from '../../app.routes';
 import { Router } from '@angular/router';
 
@@ -8,29 +8,56 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class LoginService {
-isLoggedinUser:boolean =false;
-constructor(private http : HttpClient,private router:Router) { }
-  login(username:string,password:string){
-    let body = {
-      username : username,
-      password : password
-    }
-    return this.http.post('http://localhost:3000/login',body).pipe(
-      map((data) => {
-        return data
-      }),
-      catchError((err)=>{
-        return throwError(()=> err)
-      })
-    )
+  private $isLoggedinUser: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  constructor(private http: HttpClient, private router: Router) {}
+  public set setLoggedInUser(val:boolean){
+    this.$isLoggedinUser.next(val);
   }
-  logout(){
-    if(localStorage.getItem('token')){
+  public get getLoggedInUser(){
+    return this.$isLoggedinUser.asObservable();
+  }
+  login(username: string, password: string) {
+    let body = {
+      username: username,
+      password: password,
+    };
+    return this.http.post('http://localhost:3000/login', body).pipe(
+      map((data) => {
+        return data;
+      }),
+      catchError((err) => {
+        return throwError(() => err);
+      })
+    );
+  }
+  logout() {
+    if (localStorage.getItem('token')) {
       localStorage.removeItem('token');
-      this.isLoggedinUser = false;
-      this.router.navigate(['/login'])
-    }else{
-
+      this.setLoggedInUser = false;
+      this.router.navigate(['/login']);
+    } else {
     }
+  }
+  forgetPasswordUsername(body) {
+    let url = `http://localhost:3000/forgetPassword/sendusername`;
+    return this.http.post(url, body).pipe(
+      map((data) => {
+        return data;
+      }),
+      catchError((err) => {
+        return throwError(() => err);
+      })
+    );
+  }
+  enternewPassword(body) {
+    let url = `http://localhost:3000/forgetPassword/passwordchange`;
+    return this.http.post(url, body).pipe(
+      map((data) => {
+        return data;
+      }),
+      catchError((err) => {
+        return throwError(() => err);
+      })
+    );
   }
 }

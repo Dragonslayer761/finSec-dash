@@ -47,7 +47,7 @@ export class LoginComponent {
         next: (data): void => {
           if (data['__successmsg__']) {
 
-            this.loginService.isLoggedinUser = true;
+            this.loginService.setLoggedInUser = true;
             localStorage.setItem('token', data['token']);
             this.routes.navigate(['/home/dashboard']);
           }

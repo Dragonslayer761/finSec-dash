@@ -1,47 +1,54 @@
-<div class="login-container">
-  <div class="login-form">
-    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-      <div *ngIf="signupfailed === true" class="mb-3 alert alert-danger" role="alert">
-        <label for="">{{errorMessage}}</label>
-      </div>
-      <div class="mb-3">
-        <label [ngClass]="{'text-danger' : signupForm.get('name').hasError('required') && signupForm.get('name').touched }" class="form-label" for="name">Name* : </label>
-        <input [ngClass]="{'border border-danger' : signupForm.get('name').hasError('required') && signupForm.get('name').touched }" class="form-control" formControlName="name" type="text" >
-        <div class="mt-2" role="alert"
-          *ngIf="signupForm.get('name').hasError('required') && signupForm.get('name').touched">
-          <label class="text-danger" for="">Name is required</label>
-        </div>
-      </div>
-      <div class="mb-3">
-        <label [ngClass]="{'text-danger' : signupForm.get('email').hasError('required') && signupForm.get('email').touched }" class="form-label" for="email">Email* :</label>
-        <input [ngClass]="{'border border-danger' : signupForm.get('email').hasError('required') && signupForm.get('email').touched }" class="form-control" formControlName="email" type="email" name="" id="">
-        <div class="mt-2" role="alert"
-          *ngIf="signupForm.get('email').hasError('required') && signupForm.get('email').touched">
-          <label class="text-danger" for="">Email is required</label>
-        </div>
-      </div>
-      <div class="mb-3">
-        <label [ngClass]="{'text-danger' : signupForm.get('userName').hasError('required') && signupForm.get('userName').touched }" class="form-label" for="password">Username* :</label>
-        <input [ngClass]="{'border border-danger' : signupForm.get('userName').hasError('required') && signupForm.get('userName').touched }" class="form-control" formControlName="userName" type="text" name="" id="">
-        <div class="mt-2" role="alert"
-        *ngIf="signupForm.get('userName').hasError('required') && signupForm.get('userName').touched">
-        <label class="text-danger" for="">Username is required</label>
-      </div>
-      </div>
-      <div class="mb-3">
-        <label [ngClass]="{'text-danger' : signupForm.get('passWord').hasError('required') && signupForm.get('passWord').touched }" class="form-label" for="password">Password* :</label>
-        <input [ngClass]="{'border border-danger' : signupForm.get('passWord').hasError('required') && signupForm.get('passWord').touched }" class="form-control" formControlName="passWord" type="password" name="" id="">
-        <div class="mt-2" role="alert"
-        *ngIf="signupForm.get('passWord').hasError('required') && signupForm.get('passWord').touched">
-        <label class="text-danger" for="">Username is required</label>
-      </div>
-      </div>
-      <button class="btn btn-primary me-3" type="submit">Sign Up</button>
-      <button class="btn btn-primary" (click)="goToLogin()">Cancel</button>
-    </form>
-
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <div *ngIf="signupfailed === true" class="mb-3 alert alert-danger" role="alert">
+    <label for="">{{errorMessage}}</label>
   </div>
-  <div class="brand-img-container">
-    <img class="brand-img" src="assets/image/login-bg.png" alt="">
+  <div class="mb-3">
+    <label [ngClass]="{'text-danger' : signupForm.get('name').hasError('required') && signupForm.get('name').touched }"
+      class="form-label" for="name">Name* : </label>
+    <input
+      [ngClass]="{'border border-danger' : signupForm.get('name').hasError('required') && signupForm.get('name').touched }"
+      class="form-control" formControlName="name" type="text">
+    <div class="mt-2" role="alert"
+      *ngIf="signupForm.get('name').hasError('required') && signupForm.get('name').touched">
+      <label class="text-danger" for="">Name is required</label>
+    </div>
   </div>
-</div>
+  <div class="mb-3">
+    <label
+      [ngClass]="{'text-danger' : signupForm.get('email').hasError('required') && signupForm.get('email').touched }"
+      class="form-label" for="email">Email* :</label>
+    <input
+      [ngClass]="{'border border-danger' : signupForm.get('email').hasError('required') && signupForm.get('email').touched }"
+      class="form-control" formControlName="email" type="email" name="" id="">
+    <div class="mt-2" role="alert"
+      *ngIf="signupForm.get('email').hasError('required') && signupForm.get('email').touched">
+      <label class="text-danger" for="">Email is required</label>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label
+      [ngClass]="{'text-danger' : signupForm.get('userName').hasError('required') && signupForm.get('userName').touched }"
+      class="form-label" for="password">Username* :</label>
+    <input
+      [ngClass]="{'border border-danger' : signupForm.get('userName').hasError('required') && signupForm.get('userName').touched }"
+      class="form-control" formControlName="userName" type="text" name="" id="">
+    <div class="mt-2" role="alert"
+      *ngIf="signupForm.get('userName').hasError('required') && signupForm.get('userName').touched">
+      <label class="text-danger" for="">Username is required</label>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label
+      [ngClass]="{'text-danger' : signupForm.get('passWord').hasError('required') && signupForm.get('passWord').touched }"
+      class="form-label" for="password">Password* :</label>
+    <input
+      [ngClass]="{'border border-danger' : signupForm.get('passWord').hasError('required') && signupForm.get('passWord').touched }"
+      class="form-control" formControlName="passWord" type="password" name="" id="">
+    <div class="mt-2" role="alert"
+      *ngIf="signupForm.get('passWord').hasError('required') && signupForm.get('passWord').touched">
+      <label class="text-danger" for="">Username is required</label>
+    </div>
+  </div>
+  <button class="btn btn-primary me-3" type="submit">Sign Up</button>
+  <button class="btn btn-primary" (click)="goToLogin()">Cancel</button>
+</form>
