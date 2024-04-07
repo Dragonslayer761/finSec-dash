@@ -10,12 +10,13 @@ import {  Router, RouterModule } from '@angular/router';
 import { LoginService } from './login.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { MessageAlertComponent } from '../message-alert/message-alert.component';
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, RouterModule, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, RouterModule, CommonModule,MessageAlertComponent],
   providers: [LoginService, HttpClientModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',

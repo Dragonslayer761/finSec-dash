@@ -9,11 +9,12 @@ import {
 } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
 import { SignupService } from './signup.service';
+import { MessageAlertComponent } from '../message-alert/message-alert.component';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [FormsModule, RouterModule, ReactiveFormsModule, CommonModule],
+  imports: [FormsModule, RouterModule, ReactiveFormsModule, CommonModule,MessageAlertComponent],
   providers: [SignupService],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss',
@@ -49,7 +50,7 @@ export class SignUpComponent {
       .subscribe({
         next: (data): void => {
           this.signupForm.reset();
-          this.router.navigate(['/login']);
+          this.router.navigate(['/auth/login']);
         },
         error: (error) => {
           this.signupfailed = true;
@@ -58,6 +59,6 @@ export class SignUpComponent {
       });
   }
   goToLogin() {
-    this.router.navigate(['/login']);
+    this.router.navigate(['/auth/login']);
   }
 }

@@ -1,0 +1,27 @@
+<div [ngSwitch]="type">
+  <div *ngSwitchCase="'primary'" class="alert alert-primary" role="alert">
+    {{message}}
+   </div>
+   <div *ngSwitchCase="'secondary'" class="alert alert-secondary" role="alert">
+     {{message}}
+   </div>
+   <div *ngSwitchCase="'success'" class="alert alert-success" role="alert">
+     {{message}}
+   </div>
+   <div *ngSwitchCase="'danger'" class="alert alert-danger" role="alert">
+     {{message}}
+   </div>
+   <div *ngSwitchCase="'warning'" class="alert alert-warning" role="alert">
+     {{message}}
+   </div>
+   <div *ngSwitchCase="'info'" class="alert alert-info" role="alert">
+     {{message}}
+   </div>
+   <div *ngSwitchCase="'light'" class="alert alert-light" role="alert">
+     {{message}}
+   </div>
+   <div *ngSwitchDefault class="alert alert-dark" role="alert">
+     {{message}}
+   </div>
+
+</div>

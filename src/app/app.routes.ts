@@ -7,6 +7,7 @@ import { SignUpComponent } from './Component/sign-up/sign-up.component';
 import { ForgetPasswordComponent } from './Component/forget-password/forget-password.component';
 import { PolicyComponent } from './Component/policy/policy.component';
 import { ReportsComponent } from './Component/reports/reports.component';
+import { LoginSkeletonComponent } from './Component/login-skeleton/login-skeleton.component';
 
 export const routes: Routes = [
   {
@@ -21,7 +22,7 @@ export const routes: Routes = [
       {
         path: 'policy',
         component: PolicyComponent,
-        canActivate: [authGuard]
+        canActivate: [authGuard],
       },
       {
         path: 'reports',
@@ -31,9 +32,15 @@ export const routes: Routes = [
     ],
     canActivate: [authGuard],
   },
-  { path: 'login', component: LoginComponent },
-  { path: 'signup', component: SignUpComponent },
-  { path: 'forget', component: ForgetPasswordComponent },
-  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route redirects to login
+  {
+    path: 'auth',
+    component:LoginSkeletonComponent,
+    children: [
+      { path: 'login', component: LoginComponent },
+      { path: 'signup', component: SignUpComponent },
+      { path: 'forget', component: ForgetPasswordComponent },
+    ],
+  },
+  { path: '', redirectTo: '/auth/login', pathMatch: 'full' }, // Default route redirects to login
   { path: '**', redirectTo: '/home/dashboard', pathMatch: 'full' },
 ];

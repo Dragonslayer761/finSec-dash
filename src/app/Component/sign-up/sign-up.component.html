@@ -1,7 +1,7 @@
 <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-  <div *ngIf="signupfailed === true" class="mb-3 alert alert-danger" role="alert">
-    <label for="">{{errorMessage}}</label>
-  </div>
+  <ng-container  *ngIf="signupfailed === true">
+    <app-message-alert [message]="errorMessage" [type]="'danger'"></app-message-alert>
+  </ng-container>
   <div class="mb-3">
     <label [ngClass]="{'text-danger' : signupForm.get('name').hasError('required') && signupForm.get('name').touched }"
       class="form-label" for="name">Name* : </label>

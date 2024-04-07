@@ -1,7 +1,7 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <div *ngIf="loginFailed === true" class="mb-3 alert alert-danger" role="alert">
-    <label for="">User dosen't exists. PLease enter correct Username/Password.</label>
-  </div>
+  <ng-container *ngIf="loginFailed === true" >
+    <app-message-alert [message]="'User dosen\'t exists. PLease enter correct Username/Password.'" [type]="'danger'"></app-message-alert>
+  </ng-container>
   <div class="mb-3">
     <label class="form-label"
       [ngClass]="{'text-danger' : loginForm.get('userName').hasError('required') && loginForm.get('userName').touched }"
@@ -33,11 +33,11 @@
         Remember
       </label>
     </div>
-    <p class="ms-3"><a class="link-opacity-75" [routerLink]="['/forget']">Forgot Password</a></p>
+    <p class="ms-3"><a class="link-opacity-75" [routerLink]="['/auth/forget']">Forgot Password</a></p>
   </div>
   <button class="btn btn-primary">Log In</button>
   <div class="my-3">
-    Dont't have account <a class="form-label" [routerLink]="['/signup']"
+    Dont't have account <a class="form-label" [routerLink]="['/auth/signup']"
       routerLinkActive="router-link-active">signup</a>
   </div>
 </form>

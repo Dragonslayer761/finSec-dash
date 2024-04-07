@@ -16,7 +16,7 @@ export class authGuard{
       if(this.loggedinToken === true){
         return true;
       }
-        this.router.navigate(['/login']);
+        this.router.navigate(['/auth/login']);
         return false;
   };
 }

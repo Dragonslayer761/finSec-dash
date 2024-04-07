@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../login/login.service';
+import {  Router } from '@angular/router';
 
 @Component({
   selector: 'app-forget-password',
@@ -15,7 +16,7 @@ export class ForgetPasswordComponent {
   passowordForm :FormGroup;
   userExist : boolean = false;
   passwordNotMatch : boolean = false;
-  constructor(private fb : FormBuilder,private loginService : LoginService){}
+  constructor(private fb : FormBuilder,private loginService : LoginService, private router: Router){}
 
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -48,11 +49,12 @@ export class ForgetPasswordComponent {
   enterPassword(){
     if(this.passowordForm.get('newPassword').value === this.passowordForm.get('newPassword').value){
       let body ={
-        password : this.passowordForm.get('newPassword').value
+        password : this.passowordForm.get('newPassword').value,
+        username : this.forgotForm.get('username').value
       }
       this.loginService.enternewPassword(body).subscribe({
         next : data => {
-
+          this.router.navigate(['/auth/login']);
         },
         error : err => {
 
