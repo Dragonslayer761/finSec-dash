@@ -3,14 +3,25 @@
     <app-message-alert [message]="errorMessage" [type]="'danger'"></app-message-alert>
   </ng-container>
   <div class="mb-3">
-    <label [ngClass]="{'text-danger' : signupForm.get('name').hasError('required') && signupForm.get('name').touched }"
-      class="form-label" for="name">Name* : </label>
+    <label [ngClass]="{'text-danger' : signupForm.get('firstname').hasError('required') && signupForm.get('firstname').touched }"
+      class="form-label" for="firstname">Firstname* : </label>
     <input
-      [ngClass]="{'border border-danger' : signupForm.get('name').hasError('required') && signupForm.get('name').touched }"
-      class="form-control" formControlName="name" type="text">
+      [ngClass]="{'border border-danger' : signupForm.get('firstname').hasError('required') && signupForm.get('firstname').touched }"
+      class="form-control" formControlName="firstname" type="text">
     <div class="mt-2" role="alert"
-      *ngIf="signupForm.get('name').hasError('required') && signupForm.get('name').touched">
-      <label class="text-danger" for="">Name is required</label>
+      *ngIf="signupForm.get('firstname').hasError('required') && signupForm.get('firstname').touched">
+      <label class="text-danger" for="firstname">Name is required</label>
+    </div>
+  </div>
+  <div class="mb-3">
+    <label [ngClass]="{'text-danger' : signupForm.get('lastname').hasError('required') && signupForm.get('lastname').touched }"
+      class="form-label" for="name">Lastname* : </label>
+    <input
+      [ngClass]="{'border border-danger' : signupForm.get('lastname').hasError('required') && signupForm.get('lastname').touched }"
+      class="form-control" formControlName="lastname" type="text">
+    <div class="mt-2" role="alert"
+      *ngIf="signupForm.get('lastname').hasError('required') && signupForm.get('lastname').touched">
+      <label class="text-danger" for="">Lastname is required</label>
     </div>
   </div>
   <div class="mb-3">

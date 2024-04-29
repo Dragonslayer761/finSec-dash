@@ -1,6 +1,6 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <ng-container *ngIf="loginFailed === true" >
-    <app-message-alert [message]="'User dosen\'t exists. PLease enter correct Username/Password.'" [type]="'danger'"></app-message-alert>
+    <app-message-alert [message]="loginFailedMsg" [type]="'danger'"></app-message-alert>
   </ng-container>
   <div class="mb-3">
     <label class="form-label"

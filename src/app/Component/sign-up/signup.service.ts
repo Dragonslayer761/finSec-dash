@@ -9,14 +9,15 @@ export class SignupService {
 
   constructor(private http:HttpClient) { }
 
-  signupNewUser(name,email,username,password){
+  signupNewUser(firstname,lastname,email,username,password){
     let body = {
-      name : name,
+      firstname : firstname,
+      lastname : lastname,
       email : email,
       username : username,
       password : password
     }
-    return this.http.post('http://localhost:3000/signup',body).pipe(
+    return this.http.post('http://localhost:3000/auth/signup',body).pipe(
       map((data)=>{
         return data;
       }),

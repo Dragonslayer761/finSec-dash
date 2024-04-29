@@ -32,7 +32,8 @@ export class SignUpComponent {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.signupForm = this.fb.group({
-      name: ['', Validators.required],
+      firstname: ['', Validators.required],
+      lastname : ['', Validators.required],
       email: ['', [Validators.email, Validators.required]],
       userName: ['', Validators.required],
       passWord: ['', Validators.required],
@@ -42,7 +43,8 @@ export class SignUpComponent {
     let formData = this.signupForm.value;
     this.signUpService
       .signupNewUser(
-        formData.name,
+        formData.firstname,
+        formData.lastname,
         formData.email,
         formData.userName,
         formData.passWord

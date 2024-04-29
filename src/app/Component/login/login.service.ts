@@ -21,7 +21,7 @@ export class LoginService {
       username: username,
       password: password,
     };
-    return this.http.post('http://localhost:3000/login', body).pipe(
+    return this.http.post('http://localhost:3000/auth/login', body).pipe(
       map((data) => {
         return data;
       }),
@@ -39,7 +39,7 @@ export class LoginService {
     }
   }
   forgetPasswordUsername(body) {
-    let url = `http://localhost:3000/forgetPassword/sendusername`;
+    let url = `http://localhost:3000/auth/forgetPassword/sendusername`;
     return this.http.post(url, body).pipe(
       map((data) => {
         return data;
@@ -50,7 +50,7 @@ export class LoginService {
     );
   }
   enternewPassword(body) {
-    let url = `http://localhost:3000/forgetPassword/passwordchange`;
+    let url = `http://localhost:3000/auth/forgetPassword/passwordchange`;
     return this.http.post(url, body).pipe(
       map((data) => {
         return data;

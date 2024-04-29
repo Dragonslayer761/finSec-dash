@@ -36,7 +36,7 @@ export class ForgetPasswordComponent {
     this.loginService.forgetPasswordUsername(body).subscribe(
       {
         next:data =>{
-          if(data['userExist']){
+          if(data){
             this.userExist = data['changePassword'];
           }
         },

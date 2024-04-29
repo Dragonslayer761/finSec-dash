@@ -24,6 +24,7 @@ import { MessageAlertComponent } from '../message-alert/message-alert.component'
 export class LoginComponent {
   loginForm!: FormGroup;
   loginFailed: boolean;
+  loginFailedMsg : string;
   constructor(
     private fb: FormBuilder,
     private routes: Router,
@@ -54,8 +55,9 @@ export class LoginComponent {
           }
         },
         error: (err) => {
-         if(err.error['__err']){
+         if(err.error['status'] === 'fail'){
           this.loginFailed = true;
+          this.loginFailedMsg = err.error['message']
          }
         },
         complete: () => {},
