@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 })
 export class ProfileIconComponent {
   profileSettings : string[] =[];
+  userFullName = "";
   constructor(private loginService : LoginService,private profileService : ProfileService) {}
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.

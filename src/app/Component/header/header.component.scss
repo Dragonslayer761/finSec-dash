@@ -6,3 +6,20 @@ ul{
 .move-right{
   margin-left: auto;
 }
+.navbar{
+  background-color: skyblue !important;
+  height: 100vh;
+
+}
+.side-navbar{
+  flex-direction: column;
+}
+.navbar-nav{
+  flex-direction: column;
+}
+.navbar{
+  align-items: flex-start;
+}
+.navbar>.container-fluid{
+  align-items: flex-start;
+}

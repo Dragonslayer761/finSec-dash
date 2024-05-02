@@ -1,4 +1,18 @@
-<div>
-  <app-header></app-header>
-  <router-outlet></router-outlet>
+<div class="app-container row">
+  <div class="col-lg-2 ps-0">
+    <app-header></app-header>
+  </div>
+  <div class="col-lg-10">
+    <div class="row my-3">
+      <div class="col-lg-11 ">
+        <input  class="form-control search-input d-flex w-75"  placeholder="search" type="text">
+        <mat-icon class="mx-3 search-icon">search</mat-icon>
+      </div>
+      <div class="col-lg-1 profile-center float-end ">
+        <app-profile-icon></app-profile-icon>
+      </div>
+    </div>
+    <router-outlet></router-outlet>
+  </div>
+
 </div>

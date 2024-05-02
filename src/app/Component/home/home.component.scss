@@ -1,0 +1,16 @@
+.app-container{
+  display: flex;
+}
+.search-input{
+  display:inline-flex !important;
+}
+.search-icon{
+  position: relative;
+  top: 6px;
+  left: -57px;
+}
+.profile-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
