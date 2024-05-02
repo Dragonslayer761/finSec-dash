@@ -9,7 +9,7 @@ export class ProfileService {
 
   constructor(private http: HttpClient) { }
   getProfileSetting(){
-    return this.http.get('http://localhost:3000/profile').pipe(
+    return this.http.get('http://localhost:3000/user/profile').pipe(
       map((data => {
         return data;
       })),
