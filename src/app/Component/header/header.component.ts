@@ -13,6 +13,6 @@ import { RouterModule } from '@angular/router';
 export class HeaderComponent {
   headerList:string[] = [];
   ngOnInit(){
-    this.headerList = ['dashboard','policy','sell','reports'];
+    this.headerList = ['dashboard','policy','sell','reports','customer'];
   }
 }

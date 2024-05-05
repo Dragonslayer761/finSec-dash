@@ -40,7 +40,7 @@ export class ProfileIconComponent {
       this.userDetails['firstname'][0] + this.userDetails['lastname'][0];
     this.nameInitial.toUpperCase();
   }
-  logout() {
+  logout():void {
     this.loginService.logout();
   }
 }

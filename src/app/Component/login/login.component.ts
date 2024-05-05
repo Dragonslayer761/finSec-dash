@@ -55,9 +55,9 @@ export class LoginComponent {
           }
         },
         error: (err) => {
-         if(err.error['status'] === 'fail'){
+         if(err.error['status'] === 'fail' || err.status === 0){
           this.loginFailed = true;
-          this.loginFailedMsg = err.error['message']
+          this.loginFailedMsg = err.error['message'] || err.message;
          }
         },
         complete: () => {},

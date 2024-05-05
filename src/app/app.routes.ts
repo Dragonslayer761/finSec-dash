@@ -8,6 +8,8 @@ import { ForgetPasswordComponent } from './Component/forget-password/forget-pass
 import { PolicyComponent } from './Component/policy/policy.component';
 import { ReportsComponent } from './Component/reports/reports.component';
 import { LoginSkeletonComponent } from './Component/login-skeleton/login-skeleton.component';
+import { SellComponent } from './Component/sell/sell.component';
+import { CustomerComponent } from './Component/customer/customer.component';
 
 export const routes: Routes = [
   {
@@ -27,6 +29,16 @@ export const routes: Routes = [
       {
         path: 'reports',
         component: ReportsComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: 'sell',
+        component: SellComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: 'customer',
+        component: CustomerComponent,
         canActivate: [authGuard],
       },
     ],
