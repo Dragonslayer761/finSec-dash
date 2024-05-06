@@ -1,14 +1,16 @@
 <div class="container-fluid">
   <div class="row my-3 me-3">
-    <div class="col-lg-7">
+    <div class="col-lg-6 ">
       <h1>Customer</h1>
     </div>
-    <div class="col-lg-3">
-        <button mat-flat-button color="primary">Primary</button>
+    <div class="col-lg-2">
+        <button (click)="addCustomer()" class="float-end" mat-flat-button color="primary">Add Customer
+          <mat-icon>add_circle</mat-icon>
+        </button>
     </div>
   </div>
   <div class="row mt-4">
-    <div class="col-lg-12 p-4">
+    <div class="col-lg-8 p-4">
       <table mat-table [dataSource]="dataSource" matSort>
         <ng-container matColumnDef="firstname">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>Firstname</th>
@@ -32,3 +34,12 @@
     </div>
   </div>
 </div>
+
+<ng-template #testDilog>
+  <h2 mat-dialog-title>Dialog with elements</h2>
+<mat-dialog-content>This dialog showcases the title, close, content and actions elements.</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button mat-dialog-close>Close</button>
+</mat-dialog-actions>
+
+</ng-template>
