@@ -1,0 +1,74 @@
+<div class="dialog-container">
+  <div class="row">
+    <div class="col-lg-12">
+      <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+        <ng-container *ngIf="addCustomerFailed === true">
+          <app-message-alert [message]="errorMessage" [type]="'danger'"></app-message-alert>
+        </ng-container>
+        <div class="mb-3">
+          <label
+            [ngClass]="{'text-danger' : customerForm.get('firstname').hasError('required') && customerForm.get('firstname').touched }"
+            class="form-label" for="firstname">Firstname* : </label>
+          <input
+            [ngClass]="{'border border-danger' : customerForm.get('firstname').hasError('required') && customerForm.get('firstname').touched }"
+            class="form-control" formControlName="firstname" type="text">
+          <div class="mt-2" role="alert"
+            *ngIf="customerForm.get('firstname').hasError('required') && customerForm.get('firstname').touched">
+            <label class="text-danger" for="firstname">Name is required</label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label
+            [ngClass]="{'text-danger' : customerForm.get('lastname').hasError('required') && customerForm.get('lastname').touched }"
+            class="form-label" for="name">Lastname* : </label>
+          <input
+            [ngClass]="{'border border-danger' : customerForm.get('lastname').hasError('required') && customerForm.get('lastname').touched }"
+            class="form-control" formControlName="lastname" type="text">
+          <div class="mt-2" role="alert"
+            *ngIf="customerForm.get('lastname').hasError('required') && customerForm.get('lastname').touched">
+            <label class="text-danger" for="">Lastname is required</label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label
+            [ngClass]="{'text-danger' : customerForm.get('email').hasError('required') && customerForm.get('email').touched }"
+            class="form-label" for="email">Email* :</label>
+          <input
+            [ngClass]="{'border border-danger' : customerForm.get('email').hasError('required') && customerForm.get('email').touched }"
+            class="form-control" formControlName="email" type="email" name="" id="">
+          <div class="mt-2" role="alert"
+            *ngIf="customerForm.get('email').hasError('required') && customerForm.get('email').touched">
+            <label class="text-danger" for="">Email is required</label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label
+            [ngClass]="{'text-danger' : customerForm.get('userName').hasError('required') && customerForm.get('userName').touched }"
+            class="form-label" for="password">Username* :</label>
+          <input
+            [ngClass]="{'border border-danger' : customerForm.get('userName').hasError('required') && customerForm.get('userName').touched }"
+            class="form-control" formControlName="userName" type="text" name="" id="">
+          <div class="mt-2" role="alert"
+            *ngIf="customerForm.get('userName').hasError('required') && customerForm.get('userName').touched">
+            <label class="text-danger" for="">Username is required</label>
+          </div>
+        </div>
+        <div class="mb-3">
+          <label
+            [ngClass]="{'text-danger' : customerForm.get('passWord').hasError('required') && customerForm.get('passWord').touched }"
+            class="form-label" for="password">Password* :</label>
+          <input
+            [ngClass]="{'border border-danger' : customerForm.get('passWord').hasError('required') && customerForm.get('passWord').touched }"
+            class="form-control" formControlName="passWord" type="password" name="" id="">
+          <div class="mt-2" role="alert"
+            *ngIf="customerForm.get('passWord').hasError('required') && customerForm.get('passWord').touched">
+            <label class="text-danger" for="">Username is required</label>
+          </div>
+        </div>
+        <button class="btn btn-primary me-3" type="submit">Sign Up</button>
+        <button class="btn btn-primary" (click)="cancelCustomer()">Cancel</button>
+      </form>
+
+    </div>
+  </div>
+</div>

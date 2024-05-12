@@ -13,6 +13,7 @@ import {
   MatDialogTitle,
 } from '@angular/material/dialog';
 import { CustomerService } from './customer.service';
+import { AddCustomerComponent } from '../dialog/add-customer/add-customer.component';
 
 @Component({
   selector: 'app-customer',
@@ -39,47 +40,34 @@ export class CustomerComponent {
   customerList: Customer[];
   displayHeader: string[];
   dataSource: MatTableDataSource<Customer>;
-  constructor(public dilog: MatDialog, private customerService : CustomerService) {}
+  constructor(
+    public dilog: MatDialog,
+    private customerService: CustomerService
+  ) {}
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
     this.getAllCustomer();
-    this.customerList = [
-      {
-        firstname: 'subham',
-        lastname: 'chowdhury',
-        email: 'sc@gc.com',
-        username: 'subc',
-      },
-      {
-        firstname: 'Debleena',
-        lastname: 'Biswas',
-        email: 'db@gc.com',
-        username: 'debi',
-      },
-    ];
-    this.displayHeader = Object.keys(this.customerList[0]);
-    console.log(this.displayHeader);
-    this.dataSource = new MatTableDataSource<Customer>(this.customerList);
   }
   ngAfterViewInit(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
-    this.dataSource.sort = this.sort;
+
   }
-  getAllCustomer(){
-    this.customerService.getAllCustomer().subscribe(
-      (data) => {
+  getAllCustomer() {
+    this.customerService.getAllCustomer().subscribe({
+      next: (data) => {
         this.customerList = data;
         this.dataSource = new MatTableDataSource<Customer>(this.customerList);
+        console.log(this.dataSource);
+       // this.dataSource.sort = this.sort;
         this.displayHeader = Object.keys(this.customerList[0]);
       },
-      (err) => {
-
-      }
-    )
+      error: (err) => {},
+      complete: () => {},
+    });
   }
   addCustomer() {
-    this.dilog.open(this.testDilog);
+    this.dilog.open(AddCustomerComponent);
   }
 }

@@ -10,7 +10,7 @@ export class CustomerService {
   constructor(private http:HttpClient) { }
 
   getAllCustomer():Observable<any>{
-    let url = ``;
+    let url = `http://localhost:3000/api/user/customer`;
     return this.http.get(url).pipe(
       map(data => data),
       catchError(err => throwError(() => err))
