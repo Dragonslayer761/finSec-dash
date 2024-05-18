@@ -1,13 +1,14 @@
 import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, throwError } from 'rxjs';
+import { DataService } from '../../Service/data.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SignupService {
 
-  constructor(private http:HttpClient) { }
+  constructor(private http:HttpClient,private dataService : DataService) { }
 
   signupNewUser(firstname,lastname,email,username,password){
     let body = {
@@ -17,7 +18,7 @@ export class SignupService {
       username : username,
       password : password
     }
-    return this.http.post('http://localhost:3000/auth/signup',body).pipe(
+    return this.http.post(`${this.dataService.getBaseURL}/auth/signup`,body).pipe(
       map((data)=>{
         console.log(data);
         return data;

@@ -52,22 +52,28 @@ export class CustomerComponent {
   ngAfterViewInit(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
-
+    this.dataSource.sort = this.sort;
   }
   getAllCustomer() {
     this.customerService.getAllCustomer().subscribe({
       next: (data) => {
         this.customerList = data;
         this.dataSource = new MatTableDataSource<Customer>(this.customerList);
-        console.log(this.dataSource);
-       // this.dataSource.sort = this.sort;
+        this.dataSource.sort = this.sort;
         this.displayHeader = Object.keys(this.customerList[0]);
       },
-      error: (err) => {},
-      complete: () => {},
+      error: (err) => {
+
+      },
+      complete: () => {
+
+      },
     });
   }
   addCustomer() {
-    this.dilog.open(AddCustomerComponent);
+    const dilogRef = this.dilog.open(AddCustomerComponent);
+    dilogRef.afterClosed().subscribe(data => {
+      this.getAllCustomer()
+    })
   }
 }

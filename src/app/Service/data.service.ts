@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -6,6 +7,9 @@ import { Injectable } from '@angular/core';
 export class DataService {
 
   constructor() { }
-  private username = "";
-  private name = "";
+  private baseUrl = environment.baseUrl;
+
+  public get getBaseURL(){
+    return this.baseUrl;
+  }
 }
