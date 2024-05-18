@@ -3,13 +3,14 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, catchError, map, throwError } from 'rxjs';
 import { routes } from '../../app.routes';
 import { Router } from '@angular/router';
+import { DataService } from '../../Service/data.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginService {
   private $isLoggedinUser: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router,private dataService : DataService) {}
   public set setLoggedInUser(val:boolean){
     this.$isLoggedinUser.next(val);
   }
@@ -21,7 +22,7 @@ export class LoginService {
       username: username,
       password: password,
     };
-    return this.http.post('http://localhost:3000/auth/login', body).pipe(
+    return this.http.post(`${this.dataService.getBaseURL}/auth/login`, body).pipe(
       map((data) => {
         return data;
       }),
@@ -39,7 +40,7 @@ export class LoginService {
     }
   }
   forgetPasswordUsername(body) {
-    let url = `http://localhost:3000/auth/forgetPassword/sendusername`;
+    let url = `${this.dataService.getBaseURL}/auth/forgetPassword/sendusername`;
     return this.http.post(url, body).pipe(
       map((data) => {
         return data;
@@ -50,7 +51,7 @@ export class LoginService {
     );
   }
   enternewPassword(body) {
-    let url = `http://localhost:3000/auth/forgetPassword/passwordchange`;
+    let url = `${this.dataService.getBaseURL}/auth/forgetPassword/passwordchange`;
     return this.http.post(url, body).pipe(
       map((data) => {
         return data;

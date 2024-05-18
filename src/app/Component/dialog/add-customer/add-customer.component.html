@@ -1,7 +1,7 @@
 <div class="dialog-container">
   <div class="row">
     <div class="col-lg-12">
-      <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="customerForm">
         <ng-container *ngIf="addCustomerFailed === true">
           <app-message-alert [message]="errorMessage" [type]="'danger'"></app-message-alert>
         </ng-container>
@@ -43,30 +43,30 @@
         </div>
         <div class="mb-3">
           <label
-            [ngClass]="{'text-danger' : customerForm.get('userName').hasError('required') && customerForm.get('userName').touched }"
+            [ngClass]="{'text-danger' : customerForm.get('username').hasError('required') && customerForm.get('username').touched }"
             class="form-label" for="password">Username* :</label>
           <input
-            [ngClass]="{'border border-danger' : customerForm.get('userName').hasError('required') && customerForm.get('userName').touched }"
-            class="form-control" formControlName="userName" type="text" name="" id="">
+            [ngClass]="{'border border-danger' : customerForm.get('username').hasError('required') && customerForm.get('username').touched }"
+            class="form-control" formControlName="username" type="text" name="" id="">
           <div class="mt-2" role="alert"
-            *ngIf="customerForm.get('userName').hasError('required') && customerForm.get('userName').touched">
-            <label class="text-danger" for="">Username is required</label>
+            *ngIf="customerForm.get('username').hasError('required') && customerForm.get('username').touched">
+            <label class="text-danger" for="">username is required</label>
           </div>
         </div>
         <div class="mb-3">
           <label
-            [ngClass]="{'text-danger' : customerForm.get('passWord').hasError('required') && customerForm.get('passWord').touched }"
+            [ngClass]="{'text-danger' : customerForm.get('password').hasError('required') && customerForm.get('password').touched }"
             class="form-label" for="password">Password* :</label>
           <input
-            [ngClass]="{'border border-danger' : customerForm.get('passWord').hasError('required') && customerForm.get('passWord').touched }"
-            class="form-control" formControlName="passWord" type="password" name="" id="">
+            [ngClass]="{'border border-danger' : customerForm.get('password').hasError('required') && customerForm.get('password').touched }"
+            class="form-control" formControlName="password" type="password" name="" id="">
           <div class="mt-2" role="alert"
-            *ngIf="customerForm.get('passWord').hasError('required') && customerForm.get('passWord').touched">
-            <label class="text-danger" for="">Username is required</label>
+            *ngIf="customerForm.get('password').hasError('required') && customerForm.get('password').touched">
+            <label class="text-danger" for="">username is required</label>
           </div>
         </div>
-        <button class="btn btn-primary me-3" type="submit">Sign Up</button>
-        <button class="btn btn-primary" (click)="cancelCustomer()">Cancel</button>
+        <button class="btn btn-primary me-3" mat-dialog-close type="submit" (click)="onSubmit()">Add Customer</button>
+        <button class="btn btn-primary" mat-dialog-close (click)="cancelCustomer()">Cancel</button>
       </form>
 
     </div>
