@@ -19,6 +19,7 @@ export class SignupService {
     }
     return this.http.post('http://localhost:3000/auth/signup',body).pipe(
       map((data)=>{
+        console.log(data);
         return data;
       }),
       catchError((error)=>{
