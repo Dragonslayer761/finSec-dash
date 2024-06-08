@@ -5,11 +5,10 @@ import { authGuard } from './Gaurd/auth.guard';
 import { DashboardComponent } from './Component/dashboard/dashboard.component';
 import { SignUpComponent } from './Component/sign-up/sign-up.component';
 import { ForgetPasswordComponent } from './Component/forget-password/forget-password.component';
-import { PolicyComponent } from './Component/policy/policy.component';
-import { ReportsComponent } from './Component/reports/reports.component';
 import { LoginSkeletonComponent } from './Component/login-skeleton/login-skeleton.component';
 import { SellComponent } from './Component/sell/sell.component';
 import { CustomerComponent } from './Component/customer/customer.component';
+import { SupportComponent } from './Component/support/support.component';
 
 export const routes: Routes = [
   {
@@ -22,17 +21,12 @@ export const routes: Routes = [
         canActivate: [authGuard],
       },
       {
-        path: 'policy',
-        component: PolicyComponent,
+        path: 'support',
+        component: SupportComponent,
         canActivate: [authGuard],
       },
       {
-        path: 'reports',
-        component: ReportsComponent,
-        canActivate: [authGuard],
-      },
-      {
-        path: 'sell',
+        path: 'sale',
         component: SellComponent,
         canActivate: [authGuard],
       },

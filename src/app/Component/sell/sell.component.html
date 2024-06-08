@@ -1,1 +1,11 @@
-<p>sell works!</p>
+<div class="container-fluid">
+  <div class="header">
+    <h1>Sales Report</h1>
+  </div>
+  <div class="body">
+     <ng-container *ngFor="let item of productList">
+      <app-sales-card  [header]="item['productTypeName']" [description]="item['productTypeDescription']">
+      </app-sales-card>
+    </ng-container>
+  </div>
+</div>
