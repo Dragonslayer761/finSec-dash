@@ -20,6 +20,7 @@ export class SignupService {
     }
     return this.http.post(`${this.dataService.getBaseURL}/auth/signup`,body).pipe(
       map((data)=>{
+        console.log(data,'1');
         return data;
       }),
       catchError((error)=>{
