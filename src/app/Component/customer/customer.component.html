@@ -28,8 +28,8 @@
           <th mat-header-cell *matHeaderCellDef>Username</th>
           <td mat-cell *matCellDef="let element">{{element.username}}</td>
         </ng-container>
-        <tr mat-header-row *matHeaderRowDef="displayHeader"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayHeader;"></tr>
+        <tr  mat-header-row *matHeaderRowDef="displayHeader"></tr>
+        <tr (click)="getCustomerDetails(row)" mat-row *matRowDef="let row; columns: displayHeader;"></tr>
       </table>
     </div>
   </div>

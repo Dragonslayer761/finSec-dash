@@ -48,12 +48,12 @@ export class SellComponent {
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    this.productList = productDetails;
+    this.getAllProduct();
   }
   getAllProduct():void{
     this.saleService.getAllProduct().subscribe({
       next : (data) => {
-
+        this.productList = data;
       },
       error : (error) => {
 

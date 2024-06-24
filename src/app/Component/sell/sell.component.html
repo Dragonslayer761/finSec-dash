@@ -4,7 +4,7 @@
   </div>
   <div class="body">
      <ng-container *ngFor="let item of productList">
-      <app-sales-card  [header]="item['productTypeName']" [description]="item['productTypeDescription']">
+      <app-sales-card  [header]="item['product_name']" [description]="item['product_description']">
       </app-sales-card>
     </ng-container>
   </div>

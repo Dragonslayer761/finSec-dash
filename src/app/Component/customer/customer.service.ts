@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError, map, throwError } from 'rxjs';
 import { DataService } from '../../Service/data.service';
@@ -18,7 +18,9 @@ export class CustomerService {
     );
   }
   getSpecificUser(id):Observable<any>{
-    let url = ``;
+    let url = `http://localhost:3000/api/user/customer/${id}`;
+    // let params = new HttpParams();
+    // params = params.append('id',id);
     return this.http.get(url).pipe(
       map(data => data),
       catchError(err => throwError(() => err))

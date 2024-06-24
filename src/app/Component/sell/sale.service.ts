@@ -11,7 +11,7 @@ export class SaleService {
   constructor(private http : HttpClient) { }
 
   getAllProduct():Observable<any>{
-    return this.http.get('').pipe(
+    return this.http.get('http://localhost:3000/api/products/category').pipe(
       map((data) => {
         return data
       }),

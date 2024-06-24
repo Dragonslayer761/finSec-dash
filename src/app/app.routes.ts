@@ -9,6 +9,7 @@ import { LoginSkeletonComponent } from './Component/login-skeleton/login-skeleto
 import { SellComponent } from './Component/sell/sell.component';
 import { CustomerComponent } from './Component/customer/customer.component';
 import { SupportComponent } from './Component/support/support.component';
+import { CustomerDetailsComponent } from './Component/customer-details/customer-details.component';
 
 export const routes: Routes = [
   {
@@ -33,6 +34,11 @@ export const routes: Routes = [
       {
         path: 'customer',
         component: CustomerComponent,
+        canActivate: [authGuard],
+      },
+      {
+        path: 'showCustomer/:id',
+        component: CustomerDetailsComponent,
         canActivate: [authGuard],
       },
     ],

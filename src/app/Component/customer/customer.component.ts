@@ -14,6 +14,7 @@ import {
 } from '@angular/material/dialog';
 import { CustomerService } from './customer.service';
 import { AddCustomerComponent } from '../dialog/add-customer/add-customer.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-customer',
@@ -42,7 +43,8 @@ export class CustomerComponent {
   dataSource: MatTableDataSource<Customer>;
   constructor(
     public dilog: MatDialog,
-    private customerService: CustomerService
+    private customerService: CustomerService,
+    private routes: Router,
   ) {}
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
@@ -52,7 +54,7 @@ export class CustomerComponent {
   ngAfterViewInit(): void {
     //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
     //Add 'implements AfterViewInit' to the class.
-    this.dataSource.sort = this.sort;
+   // this.dataSource.sort = this.sort;
   }
   getAllCustomer() {
     this.customerService.getAllCustomer().subscribe({
@@ -60,7 +62,7 @@ export class CustomerComponent {
         this.customerList = data;
         this.dataSource = new MatTableDataSource<Customer>(this.customerList);
         this.dataSource.sort = this.sort;
-        this.displayHeader = Object.keys(this.customerList[0]);
+        this.displayHeader = Object.keys(this.customerList[0]).filter(data => data != 'id');
       },
       error: (err) => {
 
@@ -75,5 +77,9 @@ export class CustomerComponent {
     dilogRef.afterClosed().subscribe(data => {
       this.getAllCustomer()
     })
+  }
+  getCustomerDetails(row){
+    console.log("details",row)
+    this.routes.navigate(['/home/showCustomer',row.id])
   }
 }
